@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
@@ -15,6 +16,10 @@ import { CharactersComponent } from './pages/characters/characters.component';
 import { LocationsComponent } from './pages/locations/locations.component';
 import { DetailsComponent } from './pages/details/details.component';
 import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
+import { LoaderComponent } from './components/loader/loader.component';
+
+import { LoaderService } from './components/loader/loader.service';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +29,12 @@ import { CharacterDetailsComponent } from './pages/character-details/character-d
     LocationsComponent,
     DetailsComponent,
     CharacterDetailsComponent,
+    LoaderComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -37,6 +45,7 @@ import { CharacterDetailsComponent } from './pages/character-details/character-d
     }),
   ],
   providers: [
+    LoaderService,
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]

@@ -7,6 +7,7 @@ import { DetailsComponent } from './pages/details/details.component';
 
 import { CharactersComponent } from './pages/characters/characters.component';
 import { CharacterDetailsComponent } from './pages/character-details/character-details.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'characters', pathMatch: 'full' },
@@ -30,6 +31,8 @@ const routes: Routes = [
     path: 'character-details',
     component: CharacterDetailsComponent,
   },
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

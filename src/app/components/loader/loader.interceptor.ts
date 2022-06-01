@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpEvent, HttpHandler, HttpInterceptor, HttpResponse, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
+
 import { LoaderService } from './loader.service';
 
 @Injectable()
@@ -20,6 +22,8 @@ export class LoaderInterceptor implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
         this.requests.push(req);
+
+        // console.log("No of requests--->" + this.requests.length);
 
         this.loaderService.isLoading.next(true);
         return Observable.create((observer: any): () => void => {
