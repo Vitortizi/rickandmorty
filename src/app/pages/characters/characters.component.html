@@ -1,0 +1,18 @@
+<div class="row row-cols-1 row-cols-md-4 text-center">
+    <div class="col" *ngFor="let item of items; let i = index">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <img src="{{item.image}}" class="img-fluid">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title pricing-card-title text-start">{{item.name}}</h5>
+                <ul class="list-unstyled mt-3 mb-4 text-start">
+                    <li>Specie: {{item.species}}</li>
+                    <li>Status: {{item.status}}</li>
+                    <li>Gender: {{item.gender}}</li>
+                </ul>
+                <button class="btn btn-outline-success" [routerLink]="['/character-details', {id: item.id}]"> View more</button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+.img-card {
+    width: 450px;
+    height: 450px;
+    border-radius: 300px;
+}
+
+.card {
+    border: 1px solid rgb(163 255 127);
+}
+
+@media screen and (max-width: 425px) {
+    .img-card {
+        width: 250px;
+        height: 250px;
+    }
+}

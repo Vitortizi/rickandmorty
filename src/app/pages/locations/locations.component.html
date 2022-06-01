@@ -1,0 +1,22 @@
+<div class="col py-2 my-2">
+    <input type="email" class="form-control" id="filter" [(ngModel)]="searchTerm" placeholder="Type here...">
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 text-center">
+    <div class="col" *ngFor="let item of items  | filter:searchTerm">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title pricing-card-title text-start">{{item.name}}</h5>
+                <ul class="list-unstyled mt-3 mb-4 text-start">
+                    <li>Type: {{item.type}}</li>
+                    <li>Dimension: {{item.dimension}}</li>
+                </ul>
+                <button class="btn btn-outline-success" [routerLink]="['/details', {id: item.id, type: 'location'}]">View more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-1 text-center" *ngIf="(items | filter:searchTerm) == ''">
+    <h5  class="text-center">There are no locations</h5>
+</div>

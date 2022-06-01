@@ -1,0 +1,30 @@
+<div class="col py-2 my-2">
+    <input type="email" class="form-control" id="filter" [(ngModel)]="searchTerm" placeholder="Type here...">
+</div>
+
+<div class="row row-cols-1 row-cols-md-4 text-center" *ngIf="thereAreCharacters">
+    <div class="col" *ngFor="let item of items | filter:searchTerm">
+        <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+                <img src="{{item.image}}" class="img-fluid">
+            </div>
+            <div class="card-body">
+                <h5 class="card-title pricing-card-title text-start">{{item.name}}</h5>
+                <ul class="list-unstyled mt-3 mb-4 text-start">
+                    <li>Specie: {{item.species}}</li>
+                    <li>Status: {{item.status}}</li>
+                    <li>Gender: {{item.gender}}</li>
+                </ul>
+                <button class="btn btn-outline-success" [routerLink]="['/character-details', {id: item.id}]"> View more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row row-cols-1 text-center" *ngIf="(items | filter:searchTerm) == ''">
+    <h5  class="text-center">There are no characters</h5>
+</div>
+
+<div class="row row-cols-1 text-center" *ngIf="!thereAreCharacters">
+    <h5 class="text-center">There are no characters</h5>
+</div>
